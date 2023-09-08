@@ -37,6 +37,103 @@ nav a {
     text-decoration: none;
     color: #fff;
     font-weight: bold;
+    transition: color 0.3s; /* Smooth color transition on hover */
+}
+
+nav a:hover {
+    color: #e04824; /* Hover color change */
+}
+/* Intro section styles */
+.intro {
+    background-color: #f9f9f9; /* Light gray background */
+    padding: 40px 0;
+    text-align: left;
+}
+
+.intro-title {
+    font-size: 32px;
+    margin-bottom: 20px;
+    color: #333; /* Dark gray text color */
+}
+
+.intro-text {
+    font-size: 18px;
+    margin-bottom: 30px;
+    color: #666; /* Gray text color */
+}
+
+.get-started-button {
+    display: inline-block;
+    padding: 15px 30px;
+    background-color: #e74c3c; /* Red button background color */
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.get-started-button:hover {
+    background-color: #c0392b; /* Hover background color change (darker red) */
+}
+
+/* Key Features section styles */
+.features {
+    background-color: #fff;
+    padding: 40px 0;
+    text-align: left;
+}
+
+.features-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333; /* Dark gray text color */
+}
+
+.features-list {
+    list-style: armenian;
+    text-align: left;
+    padding: 10px;
+}
+
+.features-list-item {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #555; /* Gray text color */
+}
+
+/* About Us section styles */
+.about {
+    background-color: #f9f9f9; /* Light gray background */
+    padding: 40px 0;
+    text-align: left;
+}
+
+.about-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333; /* Dark gray text color */
+}
+
+.about-text {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: #555; /* Gray text color */
+}
+
+.button {
+    display: inline-block;
+    padding: 15px 30px;
+    background-color: #e74c3c; /* Red button background color */
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.button:hover {
+    background-color: #c0392b; /* Hover background color change (darker red) */
 }
 
 /* Common styles for content */
@@ -91,28 +188,57 @@ button[type="submit"]:hover, .delete-button:hover {
     padding: 5px 10px;
     border-radius: 4px;
 }
-/* .recipe-card {
-    display: flex;
-    flex-wrap: wrap; 
-    flex-direction: row;/* Allow recipes to wrap into multiple rows */
 
-/* Recipe item styles */
-.recipe-item {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
+/* Recipe grid styles */
+.recipe-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Responsive grid with minimum 300px width for each column */
+    gap: 20px; /* Spacing between grid items */
+}
+
+/* Recipe card styles within the grid */
+.recipe-card {
     border: 1px solid #ccc;
-    padding: 10px;
+    padding: 20px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    border-radius: 4px;
+    transition: box-shadow 0.3s; /* Smooth box shadow transition on hover */
 }
 
-.recipe-image {
-    width: 30px;
-    height: 50px;
-    margin-right: 10px;
+.recipe-card:hover {
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /* Box shadow on hover */
 }
 
-.recipe-details {
-    flex-grow: 1;
+.recipe-card h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #333; /* Text color for the recipe name */
+}
+
+.recipe-card img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.recipe-card p {
+    margin-bottom: 10px;
+    color: #555; /* Text color for other details */
+}
+
+.recipe-card ul,
+.recipe-card ol {
+    margin-left: 20px;
+    margin-bottom: 10px;
+    list-style: circle;
+    color: #555; /* Text color for lists */
+}
+
+.recipe-card ul li,
+.recipe-card ol li {
+    margin-bottom: 5px;
 }
 
 /* Responsive styles */
@@ -132,6 +258,7 @@ button[type="submit"]:hover, .delete-button:hover {
     background-color: #fff;
     border: 1px solid #ccc;
     padding: 20px;
+    border-radius: 4px;
 }
 
 .categories h2 {
@@ -161,61 +288,5 @@ button[type="submit"]:hover, .delete-button:hover {
 }
 
 .category:hover {
-    background-color: #e04824;
-}
-
-/* Recipe card styles */
-.recipe-card {
-    width: calc(25% - 20px); /* Adjust the width as needed (50% for a two-column layout) */
-    box-sizing: border-box;
-    border: 1px solid #ccc;
-    padding: 20px;
-    margin: 10px;
-    background-color: #fff;
-    display: flex;
-    flex-direction:column;
-}
-
-.recipe-card h3 {
-    font-size: 24px;
-    margin-bottom: 10px;
-    color: #333; /* Text color for the recipe name */
-}
-
-.recipe-card img {
-    max-width: 100%;
-    height: auto;
-    margin-bottom: 10px;
-}
-
-.recipe-card p {
-    margin-bottom: 10px;
-    color: #555; /* Text color for other details */
-}
-
-.recipe-card ul,
-.recipe-card ol {
-    margin-left: 20px;
-    margin-bottom: 10px;
-    list-style: circle; 
-    color: #555; /* Text color for lists */
-}
-
-.recipe-card ul li,
-.recipe-card ol li {
-    margin-bottom: 5px;
-    list-style: decimal;
-}
-
-.recipe-card button.delete-recipe {
-    background-color: #f15a29;
-    color: #fff;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-.recipe-card button.delete-recipe:hover {
     background-color: #e04824;
 }

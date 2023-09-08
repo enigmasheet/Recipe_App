@@ -26,7 +26,7 @@ function loadRecipesFromJSON() {
 
 // Function to display recipes based on category
 function displayRecipes(category) {
-    recipeContainer.innerHTML = ''; // Clear existing content
+    recipeContainer.innerHTML = ' '; // Clear existing content
 
     const filteredRecipes = recipes.filter(
         recipe => category === 'All' || recipe.recipeCategory === category
@@ -119,11 +119,20 @@ if (recipeForm) {
                 .split('\n')
                 .map((instruction) => instruction.trim()), // Split instructions by lines
         };
+        const notification = document.getElementById('notification');
+    notification.textContent = 'Recipe added successfully!';
+    setTimeout(() => {
+        notification.textContent = '';
+    }, 3000); // Clear the notification after 3 seconds
 
         addRecipe(recipeData);
         recipeForm.reset();
     });
+   recipeForm.addEventListener('Add Recipe', (event) => {
+        recipeForm.reset();
+   });
 }
+
 
 
 // Load recipes when the page loads
