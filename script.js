@@ -2,12 +2,14 @@
 let recipes = [];
 let currentCategory = 'All';
 let recipeContainer; // Define the recipeContainer variable
+let notificationTimeout; // Define a variable to hold the notification timeout
 
 // Function to add a new recipe
 function addRecipe(recipeData) {
     recipes.push(recipeData);
     saveRecipesToJSON();
     displayRecipes(currentCategory); // Refresh the recipes display
+    showNotification('Recipe added successfully!', 'success'); // Show success notification
 }
 
 // Function to save recipes to JSON in localStorage
@@ -65,6 +67,7 @@ function deleteRecipe(index) {
         recipes.splice(index, 1);
         saveRecipesToJSON();
         displayRecipes(currentCategory);
+        showNotification('Recipe deleted successfully!', 'success'); // Show success notification
     }
 }
 
@@ -98,7 +101,6 @@ document.addEventListener('click', (event) => {
 });
 
 // Add a submit event listener to the form
-// Add a submit event listener to the form
 const recipeForm = document.getElementById('recipe-form');
 if (recipeForm) {
     recipeForm.addEventListener('submit', (event) => {
@@ -119,21 +121,25 @@ if (recipeForm) {
                 .split('\n')
                 .map((instruction) => instruction.trim()), // Split instructions by lines
         };
-        const notification = document.getElementById('notification');
-    notification.textContent = 'Recipe added successfully!';
-    setTimeout(() => {
-        notification.textContent = '';
-    }, 3000); // Clear the notification after 3 seconds
 
         addRecipe(recipeData);
         recipeForm.reset();
     });
-   recipeForm.addEventListener('Add Recipe', (event) => {
-        recipeForm.reset();
-   });
 }
 
+// Function to display a notification message
+function showNotification(message, type) {
+    const notification = document.getElementById('notification');
+    notification.textContent = message;
+    notification.className = `notification ${type || 'info'}`; // Set the notification class based on the type
 
+    // Clear the notification after 3 seconds
+    clearTimeout(notificationTimeout);
+    notificationTimeout = setTimeout(() => {
+        notification.textContent = '';
+        notification.className = 'notification';
+    }, 3000);
+}
 
 // Load recipes when the page loads
 document.addEventListener('DOMContentLoaded', () => {
